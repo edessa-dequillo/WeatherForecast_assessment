@@ -1,0 +1,4 @@
+
+Showing Recent Messages
+duplicate output file '/Users/edessa.dequillo/Library/Developer/Xcode/DerivedData/WeatherForecast-dxpnedhuvefnaobjnxmfaabglztb/Build/Intermediates.noindex/Previews/WeatherForecast/Products/Debug-iphonesimulator/WeatherForecast.app/Info.plist' on task: ProcessInfoPlistFile /Users/edessa.dequillo/Library/Developer/Xcode/DerivedData/WeatherForecast-dxpnedhuvefnaobjnxmfaabglztb/Build/Intermediates.noindex/Previews/WeatherForecast/Products/Debug-iphonesimulator/WeatherForecast.app/Info.plist /Users/edessa.dequillo/Library/Developer/Xcode/DerivedData/WeatherForecast-dxpnedhuvefnaobjnxmfaabglztb/Build/Intermediates.noindex/Previews/WeatherForecast/Intermediates.noindex/WeatherForecast.build/Debug-iphonesimulator/WeatherForecast.build/empty-WeatherForecast.plist
+
