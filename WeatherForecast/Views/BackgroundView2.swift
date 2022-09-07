@@ -10,7 +10,7 @@ import SwiftUI
 struct BackgroundView2: View {
     var body: some View {
         ZStack {
-           Image("lighterbg")
+           Image("background")
                 .resizable()
                 .scaledToFit()
                 .aspectRatio(contentMode: .fill)

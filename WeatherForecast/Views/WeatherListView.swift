@@ -27,18 +27,21 @@ struct WeatherListView: View {
         
     var body: some View {
         ZStack{
-            //BackgroundView2()
+            BackgroundView2()
         List {
             ForEach(store.weatherList, id: \.id) { weather in WeatherCell(weather: weather)
             
             }
-            .swipeActions(edge: .leading) {
-                Button("Delete", role: .destructive) {
-                            withAnimation {
-                                store.weatherList.removeAll()
-                                }
-                            }
-                        }
+            .onDelete(perform: { indexSet in
+                store.weatherList.remove(atOffsets: indexSet)
+            })
+//            .swipeActions(edge: .leading) {
+//                Button("Delete", role: .destructive) {
+//                            withAnimation {
+//                                store.weatherList.removeAll()
+//                                }
+//                            }
+//                        }
                     }
      
         //End of List
@@ -63,11 +66,9 @@ struct WeatherListView: View {
         }, label: {
             Image(systemName: "plus")
         }))
-        }.background(Color.gray)
-        .padding()
+        }
         .navigationTitle("Manage Cities")
-        .embedInNavigationView()
-        .edgesIgnoringSafeArea(.all)
+       
     }
        
 }

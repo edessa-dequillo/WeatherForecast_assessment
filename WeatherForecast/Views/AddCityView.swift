@@ -35,11 +35,7 @@ struct AddCityView: View {
                     }
                    
                     
-                }.padding(10)
-                .padding(10)
-                .frame(maxWidth: UIScreen.main.bounds.width/4)
-                .foregroundColor(Color.white)
-                .background(Color(#colorLiteral(red: 0.1297150552, green: 0.3200980425, blue: 0.8191890121, alpha: 1)))
+                }
                 .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
                 .navigationTitle("Add City")
                 
@@ -63,7 +59,7 @@ struct AddCityView: View {
         
         
         
-        .embedInNavigationView()
+       // .embedInNavigationView()
         
     }
 }

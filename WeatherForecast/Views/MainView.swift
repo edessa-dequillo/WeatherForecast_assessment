@@ -11,37 +11,50 @@ struct MainView: View {
     
     @ObservedObject var weatherVM = WeatherDataViewModel()
     @State private var searchTerm = ""
-    @State var showWeatherListView: Bool = false
+    @StateObject private var weatherDataVM = WeatherDataViewModel()
+    @EnvironmentObject var store: StoreViewModel
+    
+  //  @State var showWeatherListView: Bool = false
     
     var body: some View {
         
         ZStack {
             
             VStack  {
-                if showWeatherListView {
-                    WeatherListView().environmentObject(StoreViewModel())
-                            } else {
-                                Button("Manage  Cities") {
-                                    self.showWeatherListView = true
-                                }
-                            }
+                NavigationLink(destination: WeatherListView().environmentObject(StoreViewModel()), label:  {
+                    Text("Manage Cities")
+                })
+//                if showWeatherListView {
+//                    WeatherListView().environmentObject(StoreViewModel())
+//                            } else {
+//                                Button("Manage  Cities") {
+//                                    self.showWeatherListView = true
+//                                }
+//                            }
             
                         VStack {
                             
-                            TextField("Search", text: $searchTerm)
-                                .textFieldStyle(RoundedBorderTextFieldStyle())
-                                .padding(.trailing, 30)
-                                .padding(.leading,25)
-                            Button {
-                               weatherVM.city = searchTerm
-                            }
+                            VStack(spacing: 20) {
+                                TextField("Search", text: $weatherDataVM.city)
+                                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                                Button() {
+                                    // save weather in environment object
+                                   weatherDataVM.save {
+                                        weather in
+                                        store.addWeather(weather)
+                                       // presentationMode.wrappedValue.dismiss()
+                                       
+                                    }
+                                    
+                                }
+                            
                         label: {Image(systemName: "magnifyingglass")
                                     .position(x: 300, y: -25)
                                 
                         }
                         }
                         }
-            
+            }
            
             //End of Vstack1
         }//.embedInNavigationView()
