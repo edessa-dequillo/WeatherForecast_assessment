@@ -23,7 +23,7 @@ struct SettingsView: View {
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     @EnvironmentObject var store: StoreViewModel
     @AppStorage("unit") private var selectedUnit: TemperatureUnit = .celsius
-    @State private var isDarkMode = false
+    @AppStorage ("isDarkMode") private var isDarkMode = false
     
     
     var body: some View {
@@ -63,7 +63,7 @@ struct SettingsView: View {
                 
                // .padding()
             }
-           
+                .preferredColorScheme(isDarkMode ? .dark : .light)
             
              
             }.embedInNavigationView()

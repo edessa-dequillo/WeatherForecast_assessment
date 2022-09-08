@@ -13,7 +13,7 @@ struct MainView: View {
     @State private var searchTerm = ""
     @StateObject private var weatherDataVM = WeatherDataViewModel()
     @EnvironmentObject var store: StoreViewModel
-    
+  // @AppStorage ("isDarkMode") private var isDarkMode = false
   //  @State var showWeatherListView: Bool = false
     
     var body: some View {
@@ -44,24 +44,25 @@ struct MainView: View {
                                         store.addWeather(weather)
                                        // presentationMode.wrappedValue.dismiss()
                                        
-                                    }
+                                   }
                                     
                                 }
                             
                         label: {Image(systemName: "magnifyingglass")
-                                    .position(x: 300, y: -25)
+                                    .position(x: 360, y: -35)
                                 
                         }
+                            }.padding()
                         }
-                        }
-            }
+            }//.preferredColorScheme(isDarkMode ? .dark : .light)
            
             //End of Vstack1
         }//.embedInNavigationView()
         .background(Color.gray)
+        
            
         //end of ZStack
-        }
+    }
 }
 
 struct MainView_Previews: PreviewProvider {

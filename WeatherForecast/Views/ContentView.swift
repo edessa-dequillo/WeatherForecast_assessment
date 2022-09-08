@@ -16,7 +16,7 @@ struct ContentView: View {
     @State private var cancellable: AnyCancellable?
     @State var showMainView: Bool = false
     @ObservedObject var weatherVM = WeatherDataViewModel()
-
+   // @AppStorage ("isDarkMode") private var isDarkMode = false
 
     
     
@@ -44,10 +44,11 @@ struct ContentView: View {
                     Text("Locating user location...")
                 }
             }
-        }
+        }//.preferredColorScheme(isDarkMode ? .dark : .light)
       .embedInNavigationView()
             .onAppear {
                 setCurrentLocation()
+                    
         }
         }
         

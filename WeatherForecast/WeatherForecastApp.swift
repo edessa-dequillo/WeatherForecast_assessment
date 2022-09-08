@@ -9,7 +9,7 @@ import SwiftUI
 
 @main
 struct WeatherForecastApp: App {
-    @State private var isDarkMode = false
+    
 
     var body: some Scene {
         
