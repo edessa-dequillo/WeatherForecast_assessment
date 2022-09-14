@@ -49,10 +49,34 @@ struct MainView: View {
                                 }
                             
                         label: {Image(systemName: "magnifyingglass")
-                                    .position(x: 360, y: -35)
+                                    .position(x: 340, y: -35)
                                 
                         }
                             }.padding()
+                            
+                            VStack {
+                                
+                                VStack(alignment: .leading, spacing: 15) {
+                                    Text("City Name")
+                                        .fontWeight(.bold)
+                                   
+                                    HStack {
+                                        Image(systemName: "sunrise")
+                                        Text("sunrise")
+                                        
+                                    }
+                                    HStack {
+                                        Image(systemName: "sunset")
+                                        Text("sunset")
+                                    }
+                                }
+                                
+
+                            }
+                                Spacer()
+                                .padding()
+                              
+                            .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
                         }
             }//.preferredColorScheme(isDarkMode ? .dark : .light)
            
