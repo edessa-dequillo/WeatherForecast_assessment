@@ -8,66 +8,109 @@
 import SwiftUI
 
 struct MainView: View {
-    
+    @StateObject  var forecastListVM = ForecastListViewModel()
     @ObservedObject var weatherVM = WeatherDataViewModel()
-    @State private var searchTerm = ""
-    @StateObject private var weatherDataVM = WeatherDataViewModel()
     @EnvironmentObject var store: StoreViewModel
-  // @AppStorage ("isDarkMode") private var isDarkMode = false
-  //  @State var showWeatherListView: Bool = false
-    
+  
     var body: some View {
-        
         ZStack {
-            
-            VStack  {
-                NavigationLink(destination: WeatherListView().environmentObject(StoreViewModel()), label:  {
-                    Text("Manage Cities")
-                })
-//                if showWeatherListView {
-//                    WeatherListView().environmentObject(StoreViewModel())
-//                            } else {
-//                                Button("Manage  Cities") {
-//                                    self.showWeatherListView = true
-//                                }
-//                            }
-            
-                        VStack {
-                            
-                            VStack(spacing: 20) {
-                                TextField("Search", text: $weatherDataVM.city)
-                                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                                Button() {
-                                    // save weather in environment object
-                                   weatherDataVM.save {
-                                        weather in
-                                        store.addWeather(weather)
-                                       // presentationMode.wrappedValue.dismiss()
-                                       
-                                   }
-                                    
-                                }
-                            
-                        label: {Image(systemName: "magnifyingglass")
-                                    .position(x: 360, y: -35)
+            NavigationView {
+                VStack{
+                    
+                    Picker(selection: $forecastListVM.system, label: Text("System")) {
+                        Text("°C").tag(0)
+                        Text("°F").tag(1)
+                    }.pickerStyle(SegmentedPickerStyle())
+                        .frame(width: 100)
+                    .padding(.vertical)
+                    VStack(spacing: -100) {
+                        NavigationLink(destination: WeatherListView().environmentObject(StoreViewModel()), label:  {
+                            Text("Manage Cities")
                                 
+                        })
+                        
+                    }
+                    HStack {
+                        TextField("Search", text: $forecastListVM.location,
+                                  onCommit: {
+                                    forecastListVM.getWeatherForecast()
+                                  })
+                            .textFieldStyle(RoundedBorderTextFieldStyle())
+                            .overlay (
+                                Button(action: {
+                                    forecastListVM.location = ""
+                                    forecastListVM.getWeatherForecast()
+                                }) {
+                                    Image(systemName: "xmark.circle")
+                                        .foregroundColor(.gray)
+                                }
+                                .padding(.horizontal),
+                                alignment: .trailing
+                            )
+                        Button {
+                            forecastListVM.getWeatherForecast()
+                        } label: {
+                            Image(systemName: "magnifyingglass.circle.fill")
+                                .font(.title3)
                         }
-                            }.padding()
+                    }
+                    List(forecastListVM.forecasts, id: \.day) { day in
+                            VStack(alignment: .leading) {
+                                Text(day.day)
+                                    .fontWeight(.bold)
+                                HStack(alignment: .center) {
+                                  
+                                            Image(systemName: "hourglass")
+                                        }
+                                        .scaledToFit()
+                                        .frame(width: 75)
+                                    VStack(alignment: .leading) {
+                                        Text(day.overview)
+                                            .font(.title2)
+                                        HStack {
+                                            Text(day.high)
+                                            Text(day.low)
+                                        }
+//
+                                    }
+                                }
+                            }
                         }
-            }//.preferredColorScheme(isDarkMode ? .dark : .light)
-           
-            //End of Vstack1
-        }//.embedInNavigationView()
-        .background(Color.gray)
-        
-           
-        //end of ZStack
+                        .listStyle(PlainListStyle())
+                }
+                .padding(.horizontal)
+               
+                .alert(item: $forecastListVM.appError) { appAlert in
+                    Alert(title: Text("Error"),
+                          message: Text("""
+                            \(appAlert.errorString)
+                            Please try again later!
+                            """
+                            )
+                    
+                    )
+                }
+            }
+            if forecastListVM.isLoading {
+                ZStack {
+                    Color(.white)
+                        .opacity(0.3)
+                        .edgesIgnoringSafeArea(.all)
+                    ProgressView("Searching")
+                        .padding()
+                        .background(
+                            RoundedRectangle(cornerRadius: 10)
+                                .fill(Color(.systemBackground))
+                        )
+                        .shadow(radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/ )
+                }
+            }
+        }
     }
-}
+
 
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
-        MainView(weatherVM: WeatherDataViewModel())
+       MainView(forecastListVM:ForecastListViewModel())
     }
 }
-
