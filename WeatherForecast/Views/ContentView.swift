@@ -30,7 +30,7 @@ struct ContentView: View {
         
         VStack {
             if showMainView {
-                MainView(weatherVM: WeatherDataViewModel())
+                MainView(forecastListVM:ForecastListViewModel())
                         } else {
                             Button("Continue") {
                                 self.showMainView = true
