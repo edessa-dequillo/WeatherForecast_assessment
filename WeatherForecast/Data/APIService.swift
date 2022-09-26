@@ -4,6 +4,8 @@
 //
 //  Created by edessa.dequillo on 9/22/22.
 //
+// API for Daily Forecast and Search weather by location
+
 
 import Foundation
 
@@ -30,7 +32,7 @@ public class APIService {
             }
             
             guard let data = data else {
-                completion(.failure(.error(NSLocalizedString("Error: Data us corrupt.", comment: ""))))
+                completion(.failure(.error(NSLocalizedString("Error: Data is corrupt.", comment: ""))))
                 return
             }
             let decoder = JSONDecoder()

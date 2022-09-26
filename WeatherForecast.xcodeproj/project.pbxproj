@@ -106,9 +106,9 @@
 		F46A7EFC28A3E68000409288 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				F46A7EFD28A3E6AD00409288 /* WeatherFetcher.swift */,
 				F432EB8528AA2D480050E542 /* API.swift */,
 				F41377C428AAB78800049CC5 /* LocationManager.swift */,
+				F46A7EFD28A3E6AD00409288 /* WeatherFetcher.swift */,
 				F424061228DCA6D000EE2573 /* APIService.swift */,
 			);
 			path = Data;

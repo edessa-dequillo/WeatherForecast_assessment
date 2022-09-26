@@ -52,6 +52,9 @@ struct ForecastViewModel {
     var low: String {
         return "Min: \(Self.numberFormatter.string(for: convert(forecast.temp.min)) ?? "0")°"
     }
+    var icon: String {
+         forecast.weather[0].icon
+    }
     
 //    var pop: String {
 //
@@ -66,10 +69,11 @@ struct ForecastViewModel {
 //        return "Humidity: \(forecast.humidity)%"
 //    }
     
-    var weatherIconURL: URL {
-        let urlString = "https://openweathermap.org/img/wn/\(forecast.weather[0].icon)@2x.png"
-        return URL(string: urlString)!
-    }
+//    var weatherIconURL: URL {
+//        let urlString = "https://openweathermap.org/img/wn/\(forecast.weather[0].icon)@2x.png"
+//        return URL(string: urlString)!
+//    }
+   
 }
 
 

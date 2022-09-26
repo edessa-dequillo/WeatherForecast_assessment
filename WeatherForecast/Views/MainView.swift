@@ -60,7 +60,10 @@ struct MainView: View {
                                     .fontWeight(.bold)
                                 HStack(alignment: .center) {
                                   
-                                            Image(systemName: "hourglass")
+                                    URLImage(url: API.Urls.weatherUrlAsStringByIcon(icon: day.icon))
+                                        .frame(width: 50, height: 50)
+                                        
+                                           // Image(systemName: "hourglass")
                                         }
                                         .scaledToFit()
                                         .frame(width: 75)

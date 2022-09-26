@@ -45,9 +45,9 @@ class ForecastListViewModel: ObservableObject {
                 if let error = error as? CLError {
                     switch error.code {
                     case .locationUnknown, .geocodeFoundNoResult, .geocodeFoundPartialResult:
-                        self.appError = AppError(errorString: NSLocalizedString("Unable to determine location from this text.", comment: ""))
+                        self.appError = AppError(errorString: NSLocalizedString("Unable to determine location.", comment: ""))
                     case .network:
-                        self.appError = AppError(errorString: NSLocalizedString("You do not appear to have a network connection.", comment: ""))
+                        self.appError = AppError(errorString: NSLocalizedString("No internet connection.", comment: ""))
                     default:
                         self.appError = AppError(errorString: error.localizedDescription)
                     }
@@ -74,6 +74,9 @@ class ForecastListViewModel: ObservableObject {
                                 print(errorString)
                             }
                         }
+                    }
+                    func weatherUrlAsStringByIcon(icon: String) -> String {
+                        return "https://openweathermap.org/img/w/\(icon).png"
                     }
                 }
             }
