@@ -55,6 +55,13 @@ struct ForecastViewModel {
     var icon: String {
          forecast.weather[0].icon
     }
+    var sunrise: Date {
+        return forecast.sunrise
+    }
+    
+    var sunset: Date {
+        return forecast.sunset
+    }
     
 //    var pop: String {
 //

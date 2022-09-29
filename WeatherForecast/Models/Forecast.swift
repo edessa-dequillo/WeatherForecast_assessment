@@ -10,6 +10,9 @@ import Foundation
 struct Forecast: Codable {
     struct Daily: Codable {
         let dt: Date
+        let sunrise: Date
+        let sunset: Date
+        
         struct Temp: Codable {
             let min: Double
             let max: Double

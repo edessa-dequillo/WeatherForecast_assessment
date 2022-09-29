@@ -74,6 +74,14 @@ struct MainView: View {
                                             Text(day.high)
                                             Text(day.low)
                                         }
+                                        HStack {
+                                            Image(systemName: "sunrise")
+                                            Text("\(day.sunrise.formatAsString())")
+                                        }
+                                        HStack {
+                                            Image(systemName: "sunset")
+                                            Text("\(day.sunset.formatAsString())")
+                                        }
 //
                                     }
                                 }

@@ -28,7 +28,8 @@ struct WeatherListView: View {
     var body: some View {
         
         ZStack{
-            BackgroundView2()
+           BackgroundView()
+            
         List {
             ForEach(store.weatherList, id: \.id) { weather in WeatherCell(weather: weather)
             
