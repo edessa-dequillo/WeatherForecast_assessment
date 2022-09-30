@@ -26,8 +26,10 @@ struct WeatherListView: View {
    // @AppStorage ("isDarkMode") private var isDarkMode = false
         
     var body: some View {
+        
         ZStack{
-            BackgroundView2()
+           BackgroundView()
+            
         List {
             ForEach(store.weatherList, id: \.id) { weather in WeatherCell(weather: weather)
             
