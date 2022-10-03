@@ -17,19 +17,20 @@ struct MainView: View {
             NavigationView {
                 VStack{
                     
+                    VStack (alignment: .leading,spacing:10){
+                        
+                        NavigationLink(destination: WeatherListView().environmentObject(StoreViewModel()), label:  {
+                            Text("Manage Cities")
+                        })
+                    }
+                    
                     Picker(selection: $forecastListVM.system, label: Text("System")) {
                         Text("°C").tag(0)
                         Text("°F").tag(1)
                     }.pickerStyle(SegmentedPickerStyle())
                         .frame(width: 100)
                     .padding(.vertical)
-                    VStack(spacing: -100) {
-                        NavigationLink(destination: WeatherListView().environmentObject(StoreViewModel()), label:  {
-                            Text("Manage Cities")
-                                
-                        })
-                        
-                    }
+                   
                     HStack {
                         TextField("Search", text: $forecastListVM.location,
                                   onCommit: {
@@ -82,7 +83,6 @@ struct MainView: View {
                                             Image(systemName: "sunset")
                                             Text("\(day.sunset.formatAsString())")
                                         }
-//
                                     }
                                 }
                             }
@@ -98,7 +98,6 @@ struct MainView: View {
                             Please try again later!
                             """
                             )
-                    
                     )
                 }
             }

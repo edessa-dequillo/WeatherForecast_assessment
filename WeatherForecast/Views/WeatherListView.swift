@@ -28,8 +28,7 @@ struct WeatherListView: View {
     var body: some View {
         
         ZStack{
-           BackgroundView()
-            
+           BackgroundView2()
         List {
             ForEach(store.weatherList, id: \.id) { weather in WeatherCell(weather: weather)
             
@@ -37,13 +36,6 @@ struct WeatherListView: View {
             .onDelete(perform: { indexSet in
                 store.weatherList.remove(atOffsets: indexSet)
             })
-//            .swipeActions(edge: .leading) {
-//                Button("Delete", role: .destructive) {
-//                            withAnimation {
-//                                store.weatherList.removeAll()
-//                                }
-//                            }
-//                        }
                     }
      
         //End of List
