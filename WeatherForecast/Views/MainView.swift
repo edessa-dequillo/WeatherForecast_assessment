@@ -17,20 +17,22 @@ struct MainView: View {
             NavigationView {
                 VStack{
                     
-                    VStack (alignment: .leading,spacing:10){
+                    VStack(alignment: .leading){
                         
                         NavigationLink(destination: WeatherListView().environmentObject(StoreViewModel()), label:  {
                             Text("Manage Cities")
                         })
-                    }
+                    } .offset(x: -125 , y: -10 )
                     
-                    Picker(selection: $forecastListVM.system, label: Text("System")) {
-                        Text("°C").tag(0)
-                        Text("°F").tag(1)
-                    }.pickerStyle(SegmentedPickerStyle())
-                        .frame(width: 100)
-                    .padding(.vertical)
-                   
+                    VStack {
+                        Picker(selection: $forecastListVM.system, label: Text("System")) {
+                            Text("°C").tag(0)
+                            Text("°F").tag(1)
+                        }.offset(x: 150 , y: -60)
+                            .pickerStyle(SegmentedPickerStyle())
+                            .frame(width: 50)
+                        .padding(.vertical)
+                    }
                     HStack {
                         TextField("Search", text: $forecastListVM.location,
                                   onCommit: {
@@ -54,7 +56,7 @@ struct MainView: View {
                             Image(systemName: "magnifyingglass.circle.fill")
                                 .font(.title3)
                         }
-                    }
+                    }.padding()
                     List(forecastListVM.forecasts, id: \.day) { day in
                             VStack(alignment: .leading) {
                                 Text(day.day)
@@ -64,7 +66,7 @@ struct MainView: View {
                                     URLImage(url: API.Urls.weatherUrlAsStringByIcon(icon: day.icon))
                                         .frame(width: 50, height: 50)
                                         
-                                           // Image(systemName: "hourglass")
+                                          
                                         }
                                         .scaledToFit()
                                         .frame(width: 75)
@@ -89,7 +91,7 @@ struct MainView: View {
                         }
                         .listStyle(PlainListStyle())
                 }
-                .padding(.horizontal)
+               
                
                 .alert(item: $forecastListVM.appError) { appAlert in
                     Alert(title: Text("Error"),

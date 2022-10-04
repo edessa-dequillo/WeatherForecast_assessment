@@ -35,12 +35,7 @@ struct SettingsView: View {
                         Toggle(isOn: $isDarkMode, label: { Text("Dark mode")
                                 
                     })
-                       /* if isDarkMode {
-                            preferredColorScheme(.dark)
-                        } else {
-                            preferredColorScheme(.light)
-                        }*/
-                      
+                       
                     }
                     Section {
                 
@@ -61,7 +56,7 @@ struct SettingsView: View {
                     
             })
                 
-               // .padding()
+              
             }
                 .preferredColorScheme(isDarkMode ? .dark : .light)
             
