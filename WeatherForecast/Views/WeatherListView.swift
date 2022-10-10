@@ -23,13 +23,12 @@ struct WeatherListView: View {
     @EnvironmentObject var store: StoreViewModel
     
     @State private var activeSheet: Sheets?
-   // @AppStorage ("isDarkMode") private var isDarkMode = false
+    @AppStorage ("isDarkMode") private var isDarkMode = false
         
     var body: some View {
         
         ZStack{
-           BackgroundView()
-            
+           BackgroundView2()
         List {
             ForEach(store.weatherList, id: \.id) { weather in WeatherCell(weather: weather)
             
@@ -37,13 +36,6 @@ struct WeatherListView: View {
             .onDelete(perform: { indexSet in
                 store.weatherList.remove(atOffsets: indexSet)
             })
-//            .swipeActions(edge: .leading) {
-//                Button("Delete", role: .destructive) {
-//                            withAnimation {
-//                                store.weatherList.removeAll()
-//                                }
-//                            }
-//                        }
                     }
      
         //End of List
@@ -70,7 +62,7 @@ struct WeatherListView: View {
         }))
         }
         .navigationTitle("Manage Cities")
-       // .preferredColorScheme(isDarkMode ? .dark : .light)
+        .preferredColorScheme(isDarkMode ? .dark : .light)
     }
        
 }

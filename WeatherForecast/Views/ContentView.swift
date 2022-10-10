@@ -45,7 +45,7 @@ struct ContentView: View {
                 }
             }
         }//.preferredColorScheme(isDarkMode ? .dark : .light)
-      .embedInNavigationView()
+     // .embedInNavigationView()
             .onAppear {
                 setCurrentLocation()
                     
