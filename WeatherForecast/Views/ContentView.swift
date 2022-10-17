@@ -14,7 +14,7 @@ struct ContentView: View {
     @ObservedObject private var locationManager = LocationManager()
     @State private var region = MKCoordinateRegion.defaultRegion
     @State private var cancellable: AnyCancellable?
-    @State var showMainView: Bool = false
+    @State var showCurrentWeatherView: Bool = false
     @ObservedObject var weatherVM = WeatherDataViewModel()
    // @AppStorage ("isDarkMode") private var isDarkMode = false
 
@@ -29,11 +29,11 @@ struct ContentView: View {
     var body: some View {
         
         VStack {
-            if showMainView {
-                MainView(forecastListVM:ForecastListViewModel())
+            if showCurrentWeatherView {
+                CurrentWeatherView(currentWeatherVM:WeatherDataViewModel())
                         } else {
                             Button("Continue") {
-                                self.showMainView = true
+                                self.showCurrentWeatherView = true
                             }
                         }
                     
