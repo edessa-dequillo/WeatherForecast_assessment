@@ -83,23 +83,29 @@ struct WeatherCell: View {
                 VStack(alignment: .leading, spacing: 15) {
                     Text(weather.city)
                         .fontWeight(.bold)
+                       
                     HStack {
                         Image(systemName: "sunrise")
+                           
                         Text("\(weather.sunrise.formatAsString())")
+                           
                     }
                     HStack {
                         Image(systemName: "sunset")
+                          
                         Text("\(weather.sunset.formatAsString())")
+                           
                     }
-                }
+                }.foregroundColor(.searchBackground)
                 Spacer()
                 URLImage(url: API.Urls.weatherUrlAsStringByIcon(icon: weather.icon))
                     .frame(width: 50, height: 50)
-                
+                    
                 
                 Text("\(Int(weather.getTemperatureByUnit(unit: store.selectedUnit)))°\(String(store.selectedUnit.displayText.prefix(1)))")
+                 
             }
-            
+            .foregroundColor(.searchBackground)
             .padding()
           
         .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
