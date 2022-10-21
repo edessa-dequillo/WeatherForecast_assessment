@@ -39,7 +39,7 @@ struct AddCityView: View {
                 }
                 .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
                 .navigationTitle("Add City")
-                
+                .foregroundColor(.searchBackground)
                 
             }
            // End of VStack1
@@ -50,7 +50,7 @@ struct AddCityView: View {
                 
             }
             .padding()
-           
+            .foregroundColor(.searchBackground)
             
         //End of VStack2
         }

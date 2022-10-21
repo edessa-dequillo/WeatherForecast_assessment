@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CurrentWeatherView: View {
 
-var currentweather: WeatherResponse
+    var currentWeatherVM = WeatherDataViewModel()
 
 var body: some View {
     NavigationView {
@@ -19,9 +19,14 @@ var body: some View {
                 ZStack(alignment: .center) {
                     
                     VStack {
+                        VStack {
+                            NavigationLink(destination: MainView(forecastListVM: ForecastListViewModel()), label:  {
+                                Text("Search Cities")
+                            })
+                        }
                         VStack (alignment: .center, spacing: 10) {
                             
-                            Text(currentweather.weather.city)
+                            Text(currentWeatherVM.city)
                                 .font(.largeTitle)
                                 .fontWeight(.semibold)
                                 .foregroundColor(Color.white)
@@ -49,11 +54,7 @@ var body: some View {
                             Spacer()
                                 .frame(height:  250)
                             
-                            Image("GradientCity")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 500)
-                                .position(x: 192, y: -150)
+                            
                             
                         }
                         .frame(maxWidth: .infinity)
@@ -93,12 +94,12 @@ var body: some View {
                         
                             HStack {
                                 Image(systemName: "sunrise")
-                                Text("\(currentweather.weather.sunrise.formatAsString())")
+                               // Text((currentWeatherVM.sunrise.formatAsString()))
                                 
                                 Spacer()
                                 
                                 Image(systemName: "sunset")
-                                Text("\(currentweather.weather.sunset.formatAsString())")
+                              //  Text("\(currentWeatherVM.sunset.formatAsString())")
                             }
                         } // End of VStack
                         .frame(maxWidth: .infinity, alignment: .leading)

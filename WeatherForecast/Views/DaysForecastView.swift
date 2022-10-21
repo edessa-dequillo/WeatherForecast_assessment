@@ -67,24 +67,24 @@ struct DaysForecastView: View {
                 .padding()
                 
                 HStack {
-                    Text("Aug 30")
+                    Text("-")
                     Spacer()
                     Image(systemName: "cloud.bolt.fill")
                     VStack {
-                        Text("32°")
-                        Text("26°")
+                        Text("-°")
+                        Text("-°")
                     }
                 }
                 .foregroundColor(Color.white)
                 .padding()
                 
                 HStack {
-                    Text("Aug 31")
+                    Text("-")
                     Spacer()
                     Image(systemName: "cloud.bolt.rain.fill")
                     VStack {
-                        Text("31°")
-                        Text("26°")
+                        Text("-°")
+                        Text("-°")
                     }
                 }
                 .foregroundColor(Color.white)
@@ -102,7 +102,7 @@ struct DaysForecastView: View {
             
     }
         .navigationBarHidden(true)
-        .background(LinearGradient(gradient: Gradient(colors: [.purple.opacity(0.9), .blue.opacity(0.6), .pink]), startPoint: .top, endPoint: .bottom)).zIndex(10)
+        .background(LinearGradient(gradient: Gradient(colors: [.cyan.opacity(0.9), .gray.opacity(0.6), .cyan]), startPoint: .top, endPoint: .bottom)).zIndex(10)
 }
     
     private var navigationBar: some View {
