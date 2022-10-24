@@ -10,8 +10,7 @@ struct ForecastRowView: View {
     @EnvironmentObject var appController: AppController
     var dailyWeather: WeatherData.DailyWeather
     
-    // the temperature "gauge" is the TempRangeView with the hi
-    // and lo values above and below it.
+    
     var temperatureGauge: some View {
         VStack(alignment: .center, spacing: 4) {
             HStack {

@@ -45,7 +45,7 @@ struct CurrentConditionsView: View {
                 }
                 .padding()
                 
-                // Displays addition information
+                // Displays additional information
                 VStack {
                     Spacer()
                     

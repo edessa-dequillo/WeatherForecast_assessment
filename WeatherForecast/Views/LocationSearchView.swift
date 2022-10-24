@@ -79,18 +79,7 @@ struct LocationSearchView: View {
                 
             
             
-//            VStack(alignment: .leading) {
-//                HStack {
-//
-//                        NavigationLink(destination: WeatherListView().environmentObject(StoreViewModel()), label:  {
-//                            Text("Manage Cities")
-//                                .font(.caption)
-//                                .padding(.leading, 12)
-//                        })
-//
-//
-//                }
-//            }
+
             
         
             // Search History or Search Results

@@ -130,10 +130,6 @@ struct WeatherData: Decodable {
             return String(format: "%.0f°", feels_like)
         }
         
-        func uviAsString() -> String {
-            guard let uvi = uvi else { return "0" }
-            return String(format: "%.0f", uvi)
-        }
         
         func visibilityAsString() -> String {
             guard let vis = visibility else { return "0 m" }
@@ -159,20 +155,7 @@ struct WeatherData: Decodable {
         }
     }
     
-    struct HourlyWeather: Decodable {
-        var dt: Double?
-        var temp: Double?
-        var feels_like: Double?
-        var pressure: Double?
-        var humidity: Double?
-        var dew_point: Double?
-        var clouds: Double?
-        var visibility: Double?
-        var wind_speed: Double?
-        var wind_deg: Double?
-        var rain: [String: Double]?
-    }
-    
+   
     struct DailyWeather: Decodable {
         var dt: Double?
         var sunrise: Double?
@@ -219,7 +202,6 @@ struct WeatherData: Decodable {
     var timezone: String?
     var timezone_offset: Int?
     var current: CurrentWeather?
-    var hourly: [HourlyWeather]?
     var daily: [DailyWeather]?
     
     func isDay() -> Bool {

@@ -51,15 +51,7 @@ struct ForecastView: View {
                     
                 ScrollView(.vertical, showsIndicators: false) {
                     
-//                    if let hourlyData = appController.hourlyData {
-//                        TabView {
-//                            HourlyTemperatureView(hourlyData: hourlyData)
-//                            HourlyRainView(hourlyData: hourlyData)
-//                        }
-//                        .tabViewStyle(PageTabViewStyle())
-//                        .frame(height: 200)
-//                    }
-                    
+
                     eightDayForecast
                 }
                 .padding([.leading, .trailing], 10)
@@ -81,14 +73,7 @@ struct ForecastView: View {
                         CurrentConditionsView(weatherData: weatherData, proxy: proxy)
                     }
                     
-//                    if let hourlyData = appController.hourlyData {
-//                        TabView {
-//                            HourlyTemperatureView(hourlyData: hourlyData)
-//                            HourlyRainView(hourlyData: hourlyData)
-//                        }
-//                        .tabViewStyle(PageTabViewStyle())
-//                        .frame(width: proxy.size.width * 0.85, height: 200)
-//                    }
+
                                     
                     eightDayForecast
                         .padding([.leading, .trailing], 10)
