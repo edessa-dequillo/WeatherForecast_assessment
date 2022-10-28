@@ -32,10 +32,11 @@ struct ContentViewHeader: View {
                 self.searchAction()
             }
         }
+        
         .background(Color.clear)
-        .padding(.top, 10)
-        .padding(.bottom, 10)
-        .padding([.leading, .trailing], 20)
+       // .padding(.top, 10)
+     //   .padding(.bottom, 10)
+     //   .padding([.leading, .trailing], 20)
 //        if showWeatherListView {
 //            WeatherListView().environmentObject(StoreViewModel())
 //                    } else {
@@ -43,7 +44,7 @@ struct ContentViewHeader: View {
 //                            self.showWeatherListView = true
 //                            self.hideKeyboard()
 //                        }
-           
+    
     }
 }
 

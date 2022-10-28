@@ -79,18 +79,7 @@ struct LocationSearchView: View {
                 
             
             
-//            VStack(alignment: .leading) {
-//                HStack {
-//
-//                        NavigationLink(destination: WeatherListView().environmentObject(StoreViewModel()), label:  {
-//                            Text("Manage Cities")
-//                                .font(.caption)
-//                                .padding(.leading, 12)
-//                        })
-//
-//
-//                }
-//            }
+
             
         
             // Search History or Search Results
@@ -141,7 +130,7 @@ struct LocationSearchView: View {
     }
     
     func deleteItems(offsets: IndexSet) {
-        withAnimation {
+       // withAnimation {
             offsets.map { historyItems[$0] }.forEach(viewContext.delete)
             
             do {
@@ -151,7 +140,7 @@ struct LocationSearchView: View {
                 let nsError = error as NSError
                 fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
             }
-        }
+        
     }
 }
 

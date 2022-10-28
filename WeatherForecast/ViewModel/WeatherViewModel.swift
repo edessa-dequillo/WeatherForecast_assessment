@@ -7,11 +7,11 @@
 
 import Foundation
 
-struct WeatherViewModel {
+struct WeatherViewModel: Identifiable, Codable {
     
     let weather: Weather
     
-    let id = UUID()
+   var id = UUID()
     
     func getTemperatureByUnit(unit: TemperatureUnit) -> Double {
         switch unit {

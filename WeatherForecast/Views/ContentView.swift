@@ -57,7 +57,7 @@ struct ContentView: View {
                 })
             }
         }
-       // .animation(.default)
+      
     .foregroundColor(.white)
         .sheet(isPresented: self.$showSheet, content: {
             LocationSearchView()

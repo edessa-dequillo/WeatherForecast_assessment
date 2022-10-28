@@ -33,9 +33,10 @@ struct WeatherListView: View {
             ForEach(store.weatherList, id: \.id) { weather in WeatherCell(weather: weather)
             
             }
-            .onDelete(perform: { indexSet in
-                store.weatherList.remove(atOffsets: indexSet)
-            })
+//            .onDelete(perform: { indexSet in
+//                store.weatherList.remove(atOffsets: indexSet)
+//            })
+            .onDelete(perform: store.deleteWeather)
                     }
      
         //End of List
@@ -72,6 +73,7 @@ struct WeatherListView: View {
 struct WeatherCell: View {
     
     @EnvironmentObject var store: StoreViewModel
+   
     
     let weather: WeatherViewModel
     
