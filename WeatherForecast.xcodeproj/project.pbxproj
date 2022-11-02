@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		F41377C728AAB7CF00049CC5 /* MKCoordinateRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41377C628AAB7CF00049CC5 /* MKCoordinateRegion.swift */; };
 		F424061128DCA59400EE2573 /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = F424061028DCA59400EE2573 /* UIApplication.swift */; };
-		F424061328DCA6D000EE2573 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F424061228DCA6D000EE2573 /* APIService.swift */; };
 		F432EB8628AA2D480050E542 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = F432EB8528AA2D480050E542 /* API.swift */; };
 		F432EB8B28AA2DB20050E542 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = F432EB8A28AA2DB20050E542 /* Date.swift */; };
 		F432EB8D28AA2DDF0050E542 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = F432EB8C28AA2DDF0050E542 /* String.swift */; };
@@ -61,7 +60,6 @@
 		F41377C228AA743200049CC5 /* Info.plist */ = {isa = PBXFileReference; explicitFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		F41377C628AAB7CF00049CC5 /* MKCoordinateRegion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKCoordinateRegion.swift; sourceTree = "<group>"; };
 		F424061028DCA59400EE2573 /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
-		F424061228DCA6D000EE2573 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		F432EB8528AA2D480050E542 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		F432EB8A28AA2DB20050E542 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		F432EB8C28AA2DDF0050E542 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
@@ -142,7 +140,6 @@
 			children = (
 				F432EB8528AA2D480050E542 /* API.swift */,
 				F46A7EFD28A3E6AD00409288 /* WeatherFetcher.swift */,
-				F424061228DCA6D000EE2573 /* APIService.swift */,
 				F4E52DC1290265710018EF58 /* WeatherData.swift */,
 			);
 			path = Data;
@@ -329,7 +326,6 @@
 			files = (
 				F432EB8628AA2D480050E542 /* API.swift in Sources */,
 				F46A7EFE28A3E6AD00409288 /* WeatherFetcher.swift in Sources */,
-				F424061328DCA6D000EE2573 /* APIService.swift in Sources */,
 				F4E52DBE290264AA0018EF58 /* LocationSearchView.swift in Sources */,
 				F4E52DC6290266140018EF58 /* TemperatureUnitButton.swift in Sources */,
 				F4EF536D28A9FD3E0026315A /* URLImage.swift in Sources */,
