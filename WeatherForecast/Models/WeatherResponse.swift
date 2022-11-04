@@ -63,7 +63,7 @@ struct WeatherIcon: Decodable {
     let icon: String
 }
 
-struct Weather: Decodable {
+struct Weather: Codable {
     let city: String
     let temperature: Double
     let icon: String

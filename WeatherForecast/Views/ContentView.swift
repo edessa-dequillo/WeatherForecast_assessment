@@ -5,56 +5,88 @@
 //  Created by edessa.dequillo on 8/9/22.
 //
 
+
 import SwiftUI
-import MapKit
-import Combine
+import CoreData
+
 
 struct ContentView: View {
+    @Environment(\.managedObjectContext) private var viewContext
+    @EnvironmentObject var appController: AppController
     
-    @ObservedObject private var locationManager = LocationManager()
-    @State private var region = MKCoordinateRegion.defaultRegion
-    @State private var cancellable: AnyCancellable?
-    @State var showMainView: Bool = false
-    @ObservedObject var weatherVM = WeatherDataViewModel()
-   // @AppStorage ("isDarkMode") private var isDarkMode = false
+    @State private var showSheet = false
+    
+   
+    struct ForecastContent: View {
+        @EnvironmentObject var appController: AppController
+        @EnvironmentObject var store: StoreViewModel
+        var weatherData: WeatherData
+        var action: () -> Void
+        var body: some View {
+            
+            if store.showWeatherList == false {
+            VStack(alignment: .center, spacing: 0) {
+                ContentViewHeader(title: self.appController.locationTitle) {
+                    self.action()
+                }
+                ForecastView(weatherData: weatherData)
+            }
+            }
+            else {
+                SearchButton() {
+                    self.action()
+                    
+                }
 
-    
-    
-    private func setCurrentLocation() {
-        cancellable = locationManager.$location.sink { location in
-            region = MKCoordinateRegion(center: location?.coordinate ?? CLLocationCoordinate2D(), latitudinalMeters: 500, longitudinalMeters: 500)
+                WeatherListView().environmentObject(StoreViewModel())
+            }
+          
         }
     }
+
+    struct SelectLocationContent: View {
+        @EnvironmentObject var appController: AppController
+       
+        var action: () -> Void
+        var body: some View {
+            VStack {
+                WelcomeView()
+                if !appController.locationAvailable {
+                    Button("Select Location") {
+                        self.action()
+                    }.padding()
+                }
+            }
+        }
+    }
+ 
     
     var body: some View {
         
-        VStack {
-            if showMainView {
-                MainView(weatherVM: WeatherDataViewModel())
-                        } else {
-                            Button("Continue") {
-                                self.showMainView = true
-                            }
-                        }
-                    
-            VStack {
-                if locationManager.location != nil {
-                    
-                } else {
-                    Text("Locating user location...")
-                }
+        Group {
+            if let weatherData = self.appController.weatherData {
+                ForecastContent(weatherData: weatherData, action: {
+                    self.showSheet.toggle()
+                })
+            } else {
+                SelectLocationContent(action: {
+                    self.showSheet.toggle()
+                })
             }
-        }//.preferredColorScheme(isDarkMode ? .dark : .light)
-      .embedInNavigationView()
-            .onAppear {
-                setCurrentLocation()
-                    
+           
         }
-        }
+      
+    .foregroundColor(.nightLight)
+        .sheet(isPresented: self.$showSheet, content: {
+            LocationSearchView()
+                .environment(\.managedObjectContext, viewContext)
+        })
         
-       
+        
     }
-
+    
+    
+}
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {

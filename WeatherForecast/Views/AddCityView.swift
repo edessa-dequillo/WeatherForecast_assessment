@@ -12,7 +12,7 @@ struct AddCityView: View {
     @Environment(\.presentationMode) private var presentationMode
     @EnvironmentObject var store: StoreViewModel
     @StateObject private var weatherDataVM = WeatherDataViewModel()
-   // @AppStorage ("isDarkMode") private var isDarkMode = false
+   
     
     var body: some View {
         ZStack{
@@ -39,7 +39,7 @@ struct AddCityView: View {
                 }
                 .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
                 .navigationTitle("Add City")
-                
+                .foregroundColor(.searchBackground)
                 
             }
            // End of VStack1
@@ -50,7 +50,7 @@ struct AddCityView: View {
                 
             }
             .padding()
-           // .preferredColorScheme(isDarkMode ? .dark : .light)
+            .foregroundColor(.searchBackground)
             
         //End of VStack2
         }
@@ -60,7 +60,7 @@ struct AddCityView: View {
         
         
         
-       // .embedInNavigationView()
+      
         
     }
 }

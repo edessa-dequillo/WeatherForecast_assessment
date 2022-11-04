@@ -21,29 +21,25 @@ struct WeatherListView: View {
 
   
     @EnvironmentObject var store: StoreViewModel
-    
     @State private var activeSheet: Sheets?
-   // @AppStorage ("isDarkMode") private var isDarkMode = false
-        
+    @AppStorage ("isDarkMode") private var isDarkMode = false
+   // @Environment(\.presentationMode) private var presentationMode
+  //  var backButtonAction: () -> Void
     var body: some View {
+      
         ZStack{
-            BackgroundView2()
+           BackgroundView2()
+            VStack{
         List {
             ForEach(store.weatherList, id: \.id) { weather in WeatherCell(weather: weather)
             
             }
-            .onDelete(perform: { indexSet in
-                store.weatherList.remove(atOffsets: indexSet)
-            })
-//            .swipeActions(edge: .leading) {
-//                Button("Delete", role: .destructive) {
-//                            withAnimation {
-//                                store.weatherList.removeAll()
-//                                }
-//                            }
-//                        }
+//            .onDelete(perform: { indexSet in
+//                store.weatherList.remove(atOffsets: indexSet)
+//            })
+            .onDelete(perform: store.deleteWeather)
                     }
-     
+            }
         //End of List
         .listStyle(PlainListStyle())
         
@@ -53,8 +49,20 @@ struct WeatherListView: View {
             case .settings: SettingsView()
             }
         })
-        
-       
+//        .navigationBarItems(leading: Button(action: {
+//            store.showWeatherList = false
+//
+//
+//        }) {
+//            Image(systemName: "arrow.left")
+//
+//        })
+            
+//            Button(action: { store.showWeatherList = false } ) {
+//                                Text ("Back")
+//                                    .foregroundColor(.nightLight)
+//
+//                            }
         .navigationBarItems(leading: Button(action: {
             activeSheet = .settings
            
@@ -67,8 +75,9 @@ struct WeatherListView: View {
             Image(systemName: "plus")
         }))
         }
+        .embedInNavigationView()
         .navigationTitle("Manage Cities")
-       // .preferredColorScheme(isDarkMode ? .dark : .light)
+        .preferredColorScheme(isDarkMode ? .dark : .light)
     }
        
 }
@@ -78,6 +87,7 @@ struct WeatherListView: View {
 struct WeatherCell: View {
     
     @EnvironmentObject var store: StoreViewModel
+   
     
     let weather: WeatherViewModel
     
@@ -89,23 +99,29 @@ struct WeatherCell: View {
                 VStack(alignment: .leading, spacing: 15) {
                     Text(weather.city)
                         .fontWeight(.bold)
+                       
                     HStack {
                         Image(systemName: "sunrise")
+                           
                         Text("\(weather.sunrise.formatAsString())")
+                           
                     }
                     HStack {
                         Image(systemName: "sunset")
+                          
                         Text("\(weather.sunset.formatAsString())")
+                           
                     }
-                }
+                }.foregroundColor(.searchBackground)
                 Spacer()
                 URLImage(url: API.Urls.weatherUrlAsStringByIcon(icon: weather.icon))
                     .frame(width: 50, height: 50)
-                
+                    
                 
                 Text("\(Int(weather.getTemperatureByUnit(unit: store.selectedUnit)))°\(String(store.selectedUnit.displayText.prefix(1)))")
+                 
             }
-            
+            .foregroundColor(.searchBackground)
             .padding()
           
         .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))

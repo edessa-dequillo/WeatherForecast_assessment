@@ -4,6 +4,8 @@
 //
 //  Created by edessa.dequillo on 8/10/22.
 //
+//API for add city
+
 import Foundation
 
 enum NetworkError: Error {
