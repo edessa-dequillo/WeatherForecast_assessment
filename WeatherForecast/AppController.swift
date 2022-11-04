@@ -21,7 +21,7 @@ final class AppController: NSObject, ObservableObject {
     @Published var location: CLLocation? = nil
     @Published var locationTitle = "Current Location".localized()
     @Published var weatherData: WeatherData?
-  
+    @Published var weatherListView: WeatherListView?
     @Published var errorMessage: String?
     
     var isMetric: Bool { units == .metric }

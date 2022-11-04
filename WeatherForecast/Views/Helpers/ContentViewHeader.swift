@@ -9,42 +9,52 @@ import SwiftUI
 
 
 struct ContentViewHeader: View {
-    @Environment(\.horizontalSizeClass) var horizontalSizeClass
-    //@State private var showWeatherListView: Bool = false
-    
+   @Environment(\.horizontalSizeClass) var horizontalSizeClass
+  //  @Environment(\.presentationMode) private var presentationMode
+@State var showWeatherListView = false
+    @EnvironmentObject var store: StoreViewModel
     var title: String
     var searchAction: () -> Void
-    
     var body: some View {
-        NavigationView {
-            NavigationLink(destination: WeatherListView().environmentObject(StoreViewModel()), label:  {
-                              Text("Manage Cities")
-                                   .font(.caption)                                .padding(.leading, 12)
-                                   .foregroundColor(.black)
-                        })
-        }
-        HStack {
-            TemperatureUnitButton()
-            Spacer()
-            Text(title).font(.headline)
-            Spacer()
-            SearchButton() {
-                self.searchAction()
-            }
-        }
+       // NavigationView {
+      
+              
+//            }
+//        }
         
-        .background(Color.clear)
-       // .padding(.top, 10)
-     //   .padding(.bottom, 10)
-     //   .padding([.leading, .trailing], 20)
-//        if showWeatherListView {
-//            WeatherListView().environmentObject(StoreViewModel())
-//                    } else {
-//                        Button("Add City") {
-//                            self.showWeatherListView = true
-//                            self.hideKeyboard()
-//                        }
-    
+       VStack {
+//           if showWeatherListView {
+//                               WeatherListView().environmentObject(StoreViewModel())
+//
+//           }
+           Button(action: { store.showWeatherList = true } ) {
+                               Text ("Manage Cities")
+                                   .foregroundColor(.nightLight)
+                           }
+        
+            HStack {
+    //            NavigationLink(destination: WeatherListView().environmentObject(StoreViewModel()), label:  {
+    //                              Text("Manage Cities")
+    //                                   .font(.caption)                                .padding(.leading, 12)
+    //                                   .foregroundColor(.black)
+    //            })
+               
+                
+                TemperatureUnitButton()
+                Spacer()
+                Text(title).font(.headline)
+                Spacer()
+                SearchButton() {
+                    self.searchAction()
+                    
+                }
+            }
+                
+           }
+            
+            .background(Color.clear)
+        
+      
     }
 }
 

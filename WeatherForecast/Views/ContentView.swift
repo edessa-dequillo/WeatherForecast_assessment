@@ -16,22 +16,37 @@ struct ContentView: View {
     
     @State private var showSheet = false
     
+   
     struct ForecastContent: View {
         @EnvironmentObject var appController: AppController
+        @EnvironmentObject var store: StoreViewModel
         var weatherData: WeatherData
         var action: () -> Void
         var body: some View {
+            
+            if store.showWeatherList == false {
             VStack(alignment: .center, spacing: 0) {
                 ContentViewHeader(title: self.appController.locationTitle) {
                     self.action()
                 }
                 ForecastView(weatherData: weatherData)
             }
+            }
+            else {
+                SearchButton() {
+                    self.action()
+                    
+                }
+
+                WeatherListView().environmentObject(StoreViewModel())
+            }
+          
         }
     }
-    
+
     struct SelectLocationContent: View {
         @EnvironmentObject var appController: AppController
+       
         var action: () -> Void
         var body: some View {
             VStack {
@@ -44,8 +59,10 @@ struct ContentView: View {
             }
         }
     }
+ 
     
     var body: some View {
+        
         Group {
             if let weatherData = self.appController.weatherData {
                 ForecastContent(weatherData: weatherData, action: {
@@ -56,14 +73,19 @@ struct ContentView: View {
                     self.showSheet.toggle()
                 })
             }
+           
         }
       
-    .foregroundColor(.white)
+    .foregroundColor(.nightLight)
         .sheet(isPresented: self.$showSheet, content: {
             LocationSearchView()
                 .environment(\.managedObjectContext, viewContext)
         })
+        
+        
     }
+    
+    
 }
 
 struct ContentView_Previews: PreviewProvider {

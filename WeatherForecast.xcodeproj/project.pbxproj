@@ -238,7 +238,6 @@
 			isa = PBXGroup;
 			children = (
 				F4EF536428A9F7030026315A /* WeatherResponse.swift */,
-				F4E52DBF290265120018EF58 /* LocationSearchModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -246,6 +245,7 @@
 		F4F926EF28A24830009C72D5 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				F4E52DBF290265120018EF58 /* LocationSearchModel.swift */,
 				F4EF536E28A9FD7F0026315A /* WeatherDataViewModel.swift */,
 				F4EF537028A9FD940026315A /* WeatherViewModel.swift */,
 				F432EB9528AA2F070050E542 /* ImageLoader.swift */,

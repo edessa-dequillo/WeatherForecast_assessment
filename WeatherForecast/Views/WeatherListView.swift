@@ -21,14 +21,15 @@ struct WeatherListView: View {
 
   
     @EnvironmentObject var store: StoreViewModel
-    
     @State private var activeSheet: Sheets?
     @AppStorage ("isDarkMode") private var isDarkMode = false
-        
+   // @Environment(\.presentationMode) private var presentationMode
+  //  var backButtonAction: () -> Void
     var body: some View {
-        
+      
         ZStack{
            BackgroundView2()
+            VStack{
         List {
             ForEach(store.weatherList, id: \.id) { weather in WeatherCell(weather: weather)
             
@@ -38,7 +39,7 @@ struct WeatherListView: View {
 //            })
             .onDelete(perform: store.deleteWeather)
                     }
-     
+            }
         //End of List
         .listStyle(PlainListStyle())
         
@@ -48,8 +49,20 @@ struct WeatherListView: View {
             case .settings: SettingsView()
             }
         })
-        
-       
+//        .navigationBarItems(leading: Button(action: {
+//            store.showWeatherList = false
+//
+//
+//        }) {
+//            Image(systemName: "arrow.left")
+//
+//        })
+            
+//            Button(action: { store.showWeatherList = false } ) {
+//                                Text ("Back")
+//                                    .foregroundColor(.nightLight)
+//
+//                            }
         .navigationBarItems(leading: Button(action: {
             activeSheet = .settings
            
@@ -62,6 +75,7 @@ struct WeatherListView: View {
             Image(systemName: "plus")
         }))
         }
+        .embedInNavigationView()
         .navigationTitle("Manage Cities")
         .preferredColorScheme(isDarkMode ? .dark : .light)
     }

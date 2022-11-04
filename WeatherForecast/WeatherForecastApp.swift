@@ -23,6 +23,7 @@ struct WeatherForecastApp: App {
             ContentView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
                 .environmentObject(appController)
+                .environmentObject(StoreViewModel())
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .background(
                     (isDay ? Color.dayLight : Color.nightLight)

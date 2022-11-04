@@ -11,7 +11,7 @@ class StoreViewModel: ObservableObject {
     
     @Published var selectedUnit: TemperatureUnit = .celsius
     @Published var weatherList: [WeatherViewModel] = [WeatherViewModel]()
-   
+    @Published var showWeatherList: Bool = false
     
     init() {
         selectedUnit = UserDefaults.standard.unit

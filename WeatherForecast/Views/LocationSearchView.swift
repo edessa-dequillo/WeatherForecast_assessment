@@ -13,9 +13,9 @@ struct LocationSearchView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var appController: AppController
-    
+  
     @StateObject private var searchModel = LocationSearchModel()
-    
+    @State var showWeatherListView = false
     @State private var searchTerm = ""
     @State private var selectedItem: MKMapItem?
     @State private var showingHistory = true
@@ -38,13 +38,13 @@ struct LocationSearchView: View {
             .font(.caption)
         }
     }
+   
   
     var body: some View {
         
       
         VStack{
             
-          
             HStack {
                 Image(systemName: "magnifyingglass")
               
@@ -60,12 +60,14 @@ struct LocationSearchView: View {
             
             
             VStack {
+             
                 HStack {
                     
     //                Text("")
     //                    .font(.caption)
     //                    .padding(.leading, 12)
     //                Spacer()
+                  
                     CurrentLocationButton() {
                         self.appController.updateCurrentLocation()
                         self.searchTerm = ""
